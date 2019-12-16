@@ -1,0 +1,21 @@
+{{ partial "head" . }}
+  <body>
+    <div id="wrap">
+      {{ partial "header" . }}
+      <section id="about">
+        <div class="container">
+        <div class="avatar">
+          <img class="img-circle" src="{{ .Site.BaseURL }}img/{{ .Site.Params.avatar }}" alt="Responsive image">
+        </div>
+        <h3>I'm <strong>{{ .Site.Params.author }}</strong>, a senior at the Univerity of Texas at Austin.</h3>
+        <h3>My hobbies include hiking, cooking, and spending time in the outdoors with my family and friends. I hope to go into medicine and am studying Biology and Supply Chain Management with an expected graduation date of May 2020. My work experience includes a 10 week summer internship at DaVita, a Fortune 200 healthcare company. As a summer analyst, I performed data analytics and presented findings to top VPs of the company. </h3>
+        <h3>Through a computational biology course I am taking, I have been learning R and Python. Please have a look at some of my working <a href="{{ .Site.BaseURL }}projects/"> projects</a>.</h3>
+        <h3>For more check out my academic &amp; professional <a href="/resume.html">resume</a>.</h3>
+        <h3>Contact me via my LinkedIn or by <a href="mailto:{{ .Site.Params.Social.Email }}">email</a>.</h3>
+        {{ partial "social.html" . }}
+        </div>
+      </section>
+    </div>
+    {{ partial "footer" . }}
+  </body>
+</html>

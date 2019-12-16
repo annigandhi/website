@@ -1,0 +1,2 @@
+"0","seizurejoined %>% group_by(treatment) %>% summarize_if(is.numeric, mean, na.rm = T) ->df1"
+"0","head(df1)"

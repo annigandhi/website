@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blogs on Annika Gandhi</title>
+    <link>/blog/</link>
+    <description>Recent content in Blogs on Annika Gandhi</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Sun, 15 Dec 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Adventures</title>
+      <link>/blog/adventures/</link>
+      <pubDate>Sun, 15 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/adventures/</guid>
+      <description>Adventures and Travels Something else that I wanted to highlight on this site that is a huge part of my life are the travels that I have been fortunate enough to have been on! Ever since I was a child, my parents and family friends have toted me along to the craziest of places, from Alaska, to South Africa, to Thailand.
+When I travel, I love to take the opportunity to enjoy nature and appreciate the culture of the people I encounter.</description>
+    </item>
+    
+    <item>
+      <title>Regular Expressions</title>
+      <link>/blog/regular-expressions/</link>
+      <pubDate>Sun, 15 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/regular-expressions/</guid>
+      <description>Introduction In SDS 348: Computational Biology and BioInformatics, we spent a portion of the end of the course learning Python. Python is a programming language that is very versatile and allows for a wide range of complexity while still being user-friendly. What’s unique about this coding language is that it is very capable of interacting with other languages and platforms due to the usage of third party modules that can be incorporated.</description>
+    </item>
+    
+  </channel>
+</rss>

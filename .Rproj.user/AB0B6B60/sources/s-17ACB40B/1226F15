@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1576468387391.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "1226F15",
+    "lastKnownWriteTime" : 1576469082,
+    "last_content_update" : 1576469082875,
+    "path" : "~/Desktop/website2019/content/blog/2019-12-15-adventures.Rmd",
+    "project_path" : "content/blog/2019-12-15-adventures.Rmd",
+    "properties" : {
+        "cursorPosition" : "37,0",
+        "scrollLine" : "22"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 14,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

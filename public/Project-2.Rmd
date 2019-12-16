@@ -1,0 +1,424 @@
+---
+title: "Project 2"
+author: "Annika Gandhi"
+date: "11/25/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r global_options, include=FALSE}
+#LEAVE THIS CHUNK ALONE!
+library(knitr)
+opts_chunk$set(fig.align="center", fig.height=5, message=FALSE, warning=FALSE, fig.width=8, tidy.opts=list(width.cutoff=60),tidy=TRUE)
+
+class_diag<-function(probs,truth){
+  
+  tab<-table(factor(probs>.5,levels=c("FALSE","TRUE")),truth)
+  acc=sum(diag(tab))/sum(tab)
+  sens=tab[2,2]/colSums(tab)[2]
+  spec=tab[1,1]/colSums(tab)[1]
+  ppv=tab[2,2]/rowSums(tab)[2]
+
+  if(is.numeric(truth)==FALSE & is.logical(truth)==FALSE) truth<-as.numeric(truth)-1
+  
+  #CALCULATE EXACT AUC
+  ord<-order(probs, decreasing=TRUE)
+  probs <- probs[ord]; truth <- truth[ord]
+  
+  TPR=cumsum(truth)/max(1,sum(truth)) 
+  FPR=cumsum(!truth)/max(1,sum(!truth))
+  
+  dup<-c(probs[-1]>=probs[-length(probs)], FALSE)
+  TPR<-c(0,TPR[!dup],1); FPR<-c(0,FPR[!dup],1)
+  
+  n <- length(TPR)
+  auc<- sum( ((TPR[-1]+TPR[-n])/2) * (FPR[-1]-FPR[-n]) )
+
+  data.frame(acc,sens,spec,ppv,auc)
+}
+```
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+
+```{r}
+
+library(tidyverse)
+library(dplyr)
+
+install_packages <- function(pkg) { 
+  
+  # Install package if it is not already
+  if (!(pkg %in% installed.packages()[, "Package"])){ 
+    
+    install.packages(pkg, repos='http://cran.us.r-project.org')
+  }
+  
+  library(pkg, character.only = TRUE)
+  
+} # end installPackages()
+
+pkg_list = c("tidyverse", "modelr", "carData")
+lapply(pkg_list, install_packages)
+
+
+options(repos="https://cran.rstudio.com")
+a1 <- available.packages()
+a1[a1[,"Package"]=="nlme",]
+sessionInfo()
+
+
+#The dataset Salaries is a dataset of 9 month salaries for different types of professors from a college. There are 397 observations with 6 different variables. The variable salary holds the 9 month salary in dollars. The rank variable gives the type of professor, with options of associate and assistant professor as well as regular professor. The variable discipline explains whether the individual's subject type is either theoretical - level "A", or applied - level "B". The sex variable tells the gender of the individual in question, and the two other numeric variables tell whether how many years it has been since the individual recived their PhD and how many years they have taught at the school. 
+
+```
+
+
+```{r}
+
+#MANOVA test 
+
+man1<-manova(cbind(yrs.since.phd, yrs.service, salary)~sex, data=Salaries)
+summary(man1)
+
+#significant with a pvalue of 0.004884 
+
+#run univariate ANOVAs:
+
+summary.aov(man1)
+
+#All numeric variables have a significant mean difference across sex using an alpha value of .05. 
+
+#pairwaise t-tests:
+
+Salaries%>%group_by(sex)%>%summarize(mean(yrs.since.phd),mean(yrs.service), mean(salary))
+
+#Among females, the average salary is 101,002.40 while among males it is 115,090.40. Females have an average of 16.5 years since they recieved their PhD whereas males have 22.9 years since recieving theirs. On average, male professors have been teaching at the college for about 7 years longer as well. 
+
+
+#total number of tests performed- 1 MANOVA, 3 ANOVAs --> 4 total 
+
+#p-value to use: .007142857
+
+.05/4
+
+#.0125 --> everything still significant!
+
+#A one-way multivariate analysis of variance was conducted to test the effect of gender on three numeric variables for professors of a particular college: number of years since recieving their PhD, number of years of service at the college, and nine month salary in dollars. Significant differences were found for one sex versus another on the basis of all three dependent variables with a pillai trace of .032223 and a pseudo F (3,393) of 4.3618. The p-value for this test was less than .05. To follow up with the MANOVA test, 3 univariate ANOVA tests were conducted, one for each dependnt variable. To control for Type 1 error rates becuase of multiple comparisons, the Bonferroni method was used to come up with a testable alpha value of .0125 based on the 4 total tests performed and an original alpha value of .05. The univariate ANOVAs were all found to be significant as well with p-values of .00296, .00213, and .0057 for years since Phd, years of service, and salary, respectively. The assumptions that were concluded to have been met for the MANOVA test performed are the multivariate normality of the dependent variables, the homogeneity of covarianc matrices for each depndent variable and between any 2, and the linear relationships between any two dependent variables. Just by looking at the data and making plots for the normalityassumptions, we can see that the assumptions are met. 
+
+
+```
+
+
+
+
+
+```{r}
+
+#Randomization one way ANOVA test: 
+
+#One way ANOVA Table
+summary(aov(salary~rank,data=Salaries))
+
+# F value is 128.2
+
+obs_F<-128.2
+Fs<-replicate(5000,{
+ new<-Salaries%>%mutate(salary=sample(salary))
+ SSW<- new%>%group_by(rank)%>%summarize(SSW=sum((salary-mean(salary))^2))%>%summarize(sum(SSW))%>%pull
+ SSB<- new%>%mutate(mean=mean(salary))%>%group_by(rank)%>%mutate(groupmean=mean(salary))%>%
+ summarize(SSB=sum((mean-groupmean)^2))%>%summarize(sum(SSB))%>%pull
+ (SSB/2)/(SSW/384)
+})
+
+hist(Fs, prob=T); abline(v = obs_F, col="red",add=T)
+mean(Fs>obs_F)
+
+#The null hypothesis is that there is no difference in the means of the salaries based on the ranks of the professors. As a result of the randomization one way ANOVA test, we can see that there is significant evidence to reject the null hypothesis: there is a significant difference in the salary amount between professors of different ranks. 
+
+
+```
+
+```{r}
+
+#Linear regression model predicting salary from years since phd and years in service. 
+
+#mean centering of numeric variables 
+
+Salaries$yrs.since.phd_c <- Salaries$yrs.since.phd - mean(Salaries$yrs.since.phd)
+Salaries$yrs.service_c <- Salaries$yrs.service - mean(Salaries$yrs.service)
+Salaries$salary_c <- Salaries$salary - mean(Salaries$salary)
+
+fitsal1 <- lm(salary ~ yrs.service_c*yrs.since.phd_c, data = Salaries)
+
+fitsal1
+summary(fitsal1)
+
+#The interpretation of the output of this model is as follows: 
+#When the years since recieving their PhD is 0 and the years of service are also 0, we would expect a nine month salary of $123,533.470. When holding years since phd constant, for every increase in year of service we would expect an increase in salary of $250.528. When holding pears of service constant, we would expect a $1056.086 increase in salary for every additional year since phd. The negative interaction term shows that the higher the number of years since phd the less of an effect the number of years of service had on the salary. 
+
+#plot of regression: 
+
+install.packages("interactions")
+library(interactions)
+interact_plot(fitsal1, pred = yrs.service_c, modx = yrs.since.phd_c, plot.points = TRUE)
+
+
+#Checking assumptions 
+library(ggplot2)
+resids1 <- fitsal1$residuals
+fitvals1 <- fitsal1$fitted.values
+ggplot()+geom_point(aes(fitvals1,resids1))+geom_hline(yintercept=0, color='red')
+
+#From the plot of residuals and fitted values, there seems to be a lack of homoskedasticity due to the fanning out nature of the points along the regression line. 
+
+ggplot()+geom_histogram(aes(resids1), bins=20)
+
+#Normality, however, looks okay from the histogram of residuals. 
+
+#Due to heteroskedasticity, we will perform regression with robust standard errors. 
+
+library(sandwich); library(lmtest)
+bptest(fitsal1)
+
+#With a p-value of 9.957e-10, the Breush-Pagan test's null hypothesis can be rejected and it can be confirmed that heteroskedasticity is the case in the model. 
+
+summary(fitsal1)$coef[,1:2]
+coeftest(fitsal1, vcov = vcovHC(fitsal1))[,1:2]
+
+#The corrected, robust standard errors are shown in this output. Compared to the previous standard errors, all of these standard errors are quite a bit higher. However, the intercept and coefficient estimates are all the same as the original model run. 
+summary(fitsal1)
+
+#The r squared value for this regression model is the proportion of the variation in salary that is explained by this model. According to the model summary, the multiple r squared is equal to .3177. This means that 31.77% of the variation in salary is explained by the years since recieving their PhD and of service and the interaction between these two variables. 
+
+#Rerunning model without interaction: 
+
+fitsal2 <- lm(salary ~ yrs.service + yrs.since.phd, data = Salaries)
+summary(fitsal2)
+
+lrtest(fitsal2, fitsal1)
+
+#With a degree of freedom of one, a chi-squared statistic of 68.902 and a p val of 2.2e-16 is given as the outpoot of the likelihood ratio test comparing the interaction term model with the model without the interaction term. This test then proved to be significant, rejecting the null hypothesis that the two models have an equal chance of likelihood- the ratio of their likelihoods is significantly different from 1. 
+
+```
+
+```{r}
+
+#bootstrapped standard errors regression model: 
+
+samp_distn<-replicate(5000, {
+ boot_dat<-Salaries[sample(nrow(Salaries),replace=TRUE),]
+ fit<-lm(salary~yrs.service_c*yrs.since.phd_c,data=boot_dat)
+ coef(fit)
+})
+
+library(dplyr)
+
+## Estimated SEs
+samp_distn%>%t%>%as.data.frame%>%summarize_all(sd)
+
+#The bootstrapped standard errors for intercept, yrs of service, yrs since phd, and interaction are, respectively: 1955.05	297.3229	281.8892	10.47066. Compared to the robust standard errors, these bootstrapped se's are slightly lower for all but the intercept se. However, this reduction is very slight, so these standard errors aren still closer to the robust se's than the original se's, which are much lower overall for all four values. 
+
+
+```
+
+
+
+```{r}
+
+#Predicting sex (binary variable) from rank (type of professor) and salary 
+
+#making sex 0 or 1 for binary 
+
+levels(Salaries$sex) <- c(1,0)
+head(Salaries)
+
+#Now 1 is male and 0 is female
+
+fitsal3 <- glm(sex ~ rank + salary, data = Salaries, family = "binomial")
+summary(fitsal3)
+coeftest(fitsal3)
+
+#Interpretting the coefficient outputs: Increasing salary increases the probability of the professor being a male, controlling for rank due to the positive coefficient estimate, 1.221e-05,for salary. The positive coefficient value for rankProf, 4.7738e-01, means that compared to an assistant professor, a complete professor has a higher likelihood of being male. An associate professor, however, compared to an assistant professor, is less likely to be male as this coefficent value is -9.4692e-02. However, it is important to note that none of these factors are significant. 
+
+
+
+#Confusion matrix: 
+
+prob<- predict(fitsal3, type = "response")
+pred<-ifelse(prob>.5,1,0)
+table(truth=Salaries$sex, prediction=pred)%>%addmargins
+
+#   prediction
+#truth 0 1  Sum
+#  0   0 39  39
+#  1   0 358 358
+#  Sum 0 397 397
+
+#From the confusion matrix we can see that none of the professors were predicted to be female. 
+
+#Accuracy statistics: 
+
+(0+358)/397
+
+#accuracy = 0.9017632
+
+358/397
+
+#Sensitivity (TPR) = 0.9017632
+
+0/39 
+
+#Specificity (TNR) = 0
+
+358/358
+
+#Precision (PPV) = 1
+
+#From these accuracy statsistics, we can see that the model did well in predicting the male professors that were male, but had the lowest negative rate possible in terms of specificity because the model did not predict any professors as female when there were truly 39/397 professors that were female. The model had a perfect recall or precision score of 1 because it predicted all the male professors as male. 
+
+
+#logit 
+
+odds<-function(p)p/(1-p)
+p<-seq(0,1,by=.1)
+cbind(p, odds=odds(p))%>%round(4)
+
+logit<-function(p)log(odds(p))
+cbind(p, odds=odds(p),logit=logit(p))%>%round(4)
+
+
+
+#density of log-odds (logit)
+
+fitsal4<-glm(sex ~ rank + salary, data = Salaries, family = binomial(link="logit"))
+coeftest(fitsal4)
+
+Salaries$logit<-predict(fitsal4) 
+Salaries$sex<-factor(Salaries$sex,levels=c(1,0),labels=c("male","female"))
+ggplot(Salaries,aes(logit, fill=sex))+geom_density(alpha=.3)+geom_vline(xintercept=0,lty=2)
+ggplot
+
+
+
+
+
+#
+
+library(ggplot2)
+install.packages("plotROC")
+library(plotROC)
+
+ROCplot<-ggplot(Salaries)+geom_roc(aes(d=sex,m=prob), n.cuts=0)+geom_segment(aes(x=0,xend=1,y=0,yend=1),lty=2)
+
+ROCplot
+
+calc_auc(ROCplot)
+
+# auc is 0.6449291
+
+#The area under the curve is .6449. This is the amount out of 1 that is explained by the model. The .6449 value is the probability that being predicted as a male has a higher prediction that a randomly selected person has the probability of being predicted a male. 
+
+
+#sens<-function(p,data=data, y=y) mean(data[data$y==1,]$prob>p)
+#spec<-function(p,data=data, y=y) mean(data[data$y==0,]$prob<p)
+#sensitivity<-sapply(seq(0,1,.01),sens,Salaries)
+#specificity<-sapply(seq(0,1,.01),spec,Salaries)
+#ROC1<-data.frame(sensitivity,specificity,cutoff=seq(0,1,.01))
+
+#ROCcurve<-ggplot(Salaries)+geom_roc(aes(d=sex,m=prob), n.cuts=0)
+#ROCcurve
+#calc_auc(ROCcurve)
+
+#10 fold CV
+
+
+class_diag<-function(probs,truth){
+ tab<-table(factor(probs>.5,levels=c("FALSE","TRUE")),truth)
+ acc=sum(diag(tab))/sum(tab)
+ sens=tab[2,2]/colSums(tab)[2]
+ spec=tab[1,1]/colSums(tab)[1]
+ ppv=tab[2,2]/rowSums(tab)[2]
+ if(is.numeric(truth)==FALSE & is.logical(truth)==FALSE) truth<-as.numeric(truth)-1
+ #CALCULATE EXACT AUC
+ ord<-order(probs, decreasing=TRUE)
+ probs <- probs[ord]; truth <- truth[ord]
+ TPR=cumsum(truth)/max(1,sum(truth))
+ FPR=cumsum(!truth)/max(1,sum(!truth))
+ dup<-c(probs[-1]>=probs[-length(probs)], FALSE)
+ TPR<-c(0,TPR[!dup],1); FPR<-c(0,FPR[!dup],1)
+ n <- length(TPR)
+ auc<- sum( ((TPR[-1]+TPR[-n])/2) * (FPR[-1]-FPR[-n]) )
+ data.frame(acc,sens,spec,ppv,auc)
+} 
+
+
+set.seed(1234)
+k=10 #choose number of folds
+data1<-Salaries[sample(nrow(Salaries)),] #randomly order rows
+folds<-cut(seq(1:nrow(Salaries)),breaks=k,labels=F) #create folds
+diags<-NULL
+for(i in 1:k){
+ ## Create training and test sets
+ train<-data1[folds!=i,]
+ test<-data1[folds==i,]
+ truth<-test$sex
+ ## Train model on training set
+ probs<-predict(fitsal3,newdata = test,type="response")
+ ## Test model on test set (save all k results)
+ diags<-rbind(diags,class_diag(probs,truth))
+}
+	
+apply(diags,2,mean) 
+
+#    acc       sens       spec        ppv        auc 
+# 0.09814103 1.00000000 0.00000000 0.09814103 0.36476759 
+
+```
+
+```{r}
+#lasso regression: 
+
+Salariesslim <- select(Salaries, rank, discipline, yrs.since.phd, yrs.service, sex, salary)
+fitsal5<- lm(sex~., data = Salariesslim)
+yhat <- predict(fitsal5)
+mean((Salaries$sex-yhat)^2) 
+
+library(glmnet)
+data(Salariesslim)
+
+
+Salariesslim<-Salariesslim%>%mutate_at(-1, function(x)x-mean(x))
+
+
+y<-as.matrix(Salariesslim$sex)
+#x<-Salariesslim[,-1]%>%scale%>%as.matrix
+
+
+#dplyr::select(-sex)%>%mutate_all(scale)%>%as.matrix
+
+#cv<-cv.glmnet(x,y) 
+
+#Calculating mean squared error: 
+mean((Salariesslim$sex-yhat)^2) 
+
+```

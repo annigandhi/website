@@ -1,0 +1,42 @@
+"0","glimpse(seizurejoined)"
+"1","Observations: 236
+"
+"1","Variables: 12
+"
+"1","$ X1           [3m[38;5;246m<dbl>[39m[23m 1, 110, 112, 114, 2, 210, 212, 214, 3, 310, 312, 314, 4, 41…
+"
+"1",""
+"1","$ treatment    [3m[38;5;246m<chr>[39m[23m ""placebo"", ""placebo"", ""placebo"", ""placebo"", ""placebo"", ""pla…
+"
+"1",""
+"1","$ base         [3m[38;5;246m<dbl>[39m[23m 11, 11, 11, 11, 11, 11, 11, 11, 6, 6, 6, 6, 8, 8, 8, 8, 66,…
+"
+"1",""
+"1","$ age          [3m[38;5;246m<dbl>[39m[23m 31, 31, 31, 31, 30, 30, 30, 30, 25, 25, 25, 25, 36, 36, 36,…
+"
+"1",""
+"1","$ seizure.rate [3m[38;5;246m<dbl>[39m[23m 5, 3, 3, 3, 3, 5, 3, 3, 2, 4, 0, 5, 4, 4, 1, 4, 7, 18, 9, 2…
+"
+"1",""
+"1","$ period       [3m[38;5;246m<dbl>[39m[23m 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4,…
+"
+"1",""
+"1","$ subject      [3m[38;5;246m<dbl>[39m[23m 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5,…
+"
+"1",""
+"1","$ y1           [3m[38;5;246m<dbl>[39m[23m 5, 5, 5, 5, 3, 3, 3, 3, 2, 2, 2, 2, 4, 4, 4, 4, 7, 7, 7, 7,…
+"
+"1",""
+"1","$ y2           [3m[38;5;246m<dbl>[39m[23m 3, 3, 3, 3, 5, 5, 5, 5, 4, 4, 4, 4, 4, 4, 4, 4, 18, 18, 18,…
+"
+"1",""
+"1","$ y3           [3m[38;5;246m<dbl>[39m[23m 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 1, 1, 1, 1, 9, 9, 9, 9,…
+"
+"1",""
+"1","$ y4           [3m[38;5;246m<dbl>[39m[23m 3, 3, 3, 3, 3, 3, 3, 3, 5, 5, 5, 5, 4, 4, 4, 4, 21, 21, 21,…
+"
+"1",""
+"1","$ trt          [3m[38;5;246m<dbl>[39m[23m 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+"
+"0","#To join these to datasets, I chose to use the left join function because I wanted to keep all the columns from both datasets and all of the rows from the epilepsy dataset, which has more observations because of the 4 periods for each subject. Performing this join took all the rows from the epilepsy data set and matched them with rows in the seizure data with matching values for age, base, and the identifying column X1. No observations were dropped. "
+"0",""

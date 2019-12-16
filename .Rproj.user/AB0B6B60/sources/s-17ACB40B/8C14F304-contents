@@ -1,0 +1,67 @@
+---
+author: Annika Gandhi
+date: "2019-12-15"
+highlight: true
+linktitle: Regular Expressions in Python
+title: Regular Expressions in Python
+---
+
+
+### **Introduction**
+
+In SDS 348: Computational Biology and BioInformatics, we spent a portion of the end of the course learning Python. Python is a programming language that is very versatile and allows for a wide range of complexity while still being user-friendly. What's unique about this coding language is that it is very capable of interacting with other languages and platforms due to the usage of third party modules that can be incorporated. 
+
+
+### **Regular Expressions**
+
+An interesting topic that we learned about in our class in the Python module was the use of regular expressions in this language. The usage of these are for searching for matching specific patterns with the intention of extracting information from a subset of text. These expressions can be very useful for data cleaning, filtering, and creating new variables. 
+
+What was most confusing and difficult to grasp about this aspect of Python, in my opinion, were the amount of special characters that each have a different meaning in the context of regular expressions, AKA regex. Regex characters are conveniently used to convey a type of character or a specific criteria that a character has to match.
+
+Below is a graphic that I used to help me remember the characters and what they did in the regex functions: 
+
+![This is an image](img/regex.jpg)
+
+
+ I think an example would be most helpful to demonstrate here. The example below was taken from HW 11:
+ 
+``` 
+
+import re
+
+string1="We have to extract these numbers 12, 47, 48 The integers numbers are also interesting: 189 2036 314\',\' is a separator, so please extract these numbers 125,789,1450 and also these 564,90456 We like to offer you 7890$ per month in order to complete this task... we are joking"
+print(string1)
+
+re.findall(r'[0-9]+', string1)
+
+```
+
+What we wanted to do here was extract all numbers in string1. This was accomplished by using the findall regex function to find all matches in the string that contain the numeric characters 0-9, with the "+" indicating that there can be 1 or more matches of the numbers 0-9 for the the phrase to be a match.
+
+
+
+Can you guess what the output should be? 
+
+
+
+
+The output contained all numbers from the string, regardless of their size: 
+
+```
+
+['12',
+ '47',
+ '48',
+ '189',
+ '2036',
+ '314',
+ '125',
+ '789',
+ '1450',
+ '564',
+ '90456',
+ '7890']
+ 
+ ```
+
+

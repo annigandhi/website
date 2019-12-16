@@ -1,0 +1,8 @@
+"0",""
+"0",""
+"0",""
+"0","library(ggplot2)"
+"0",""
+"0","ggplot(data = seizurejoined, aes(x= age, y= seizure.rate, color= treatment)) + "
+"0","  geom_point() +  labs(title=""Age versus Seizure Rate "", x=""Age (y)"", y = ""Number of Seizures per Two Week Interval"") +"
+"0","  theme(legend.position = ""left"") + scale_fill_hue(h=c(0,90))"

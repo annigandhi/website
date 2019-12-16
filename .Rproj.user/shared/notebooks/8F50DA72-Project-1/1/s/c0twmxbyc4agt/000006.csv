@@ -1,0 +1,5 @@
+"0",""
+"0","##This plot shows the mean number of seizures per two week interval for all individuals. I also included an error bar that showed the amount of variability in the form of the standard error of the mean. I also overlayed the mean value of the new baseline per two week variable to see how seizure rates differed over time compared to the baseline time period. Unfortunately, there does not seem to be a steady decline in seizure rates over time during the trial, due to periods 2 and 3 being quite similar. However, there is a noticable decrease in seizure rate from period 1 to period 4.Compared to the baseline number of seizures, the average is greater than baseline for weeks 1-6 and slightly lower than the mean baseline for weeks 6-8 of the trial. This could possibly be due to the effects of the drug over time, but this is not conclusive. For this plot, I changed the color to greens and blues and removed the legend. I also created custom tick marks for the y axis. "
+"0",""
+"0"," "
+"0",""

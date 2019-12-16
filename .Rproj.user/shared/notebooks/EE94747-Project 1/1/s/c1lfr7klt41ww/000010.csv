@@ -1,0 +1,5 @@
+"0",""
+"0","# mean_rate"
+"0","#1  8.962963"
+"0",""
+"0","seizurejoined %>% filter(period == 2 & trt == 1) %>% summarise(mean_rate = mean(seizure.rate, na.rm = T))"

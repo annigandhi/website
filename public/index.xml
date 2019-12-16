@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Annika Gandhi</title>
+    <link>/</link>
+    <description>Recent content on Annika Gandhi</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Sun, 15 Dec 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Adventures</title>
+      <link>/blog/adventures/</link>
+      <pubDate>Sun, 15 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/adventures/</guid>
+      <description>Adventures and Travels Something else that I wanted to highlight on this site that is a huge part of my life are the travels that I have been fortunate enough to have been on! Ever since I was a child, my parents and family friends have toted me along to the craziest of places, from Alaska, to South Africa, to Thailand.
+When I travel, I love to take the opportunity to enjoy nature and appreciate the culture of the people I encounter.</description>
+    </item>
+    
+    <item>
+      <title>Regular Expressions</title>
+      <link>/blog/regular-expressions/</link>
+      <pubDate>Sun, 15 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/regular-expressions/</guid>
+      <description>Introduction In SDS 348: Computational Biology and BioInformatics, we spent a portion of the end of the course learning Python. Python is a programming language that is very versatile and allows for a wide range of complexity while still being user-friendly. What’s unique about this coding language is that it is very capable of interacting with other languages and platforms due to the usage of third party modules that can be incorporated.</description>
+    </item>
+    
+    <item>
+      <title>Projects</title>
+      <link>/projects/</link>
+      <pubDate>Sun, 02 Oct 2016 22:55:05 -0400</pubDate>
+      
+      <guid>/projects/</guid>
+      <description>##My Projects:
+These are the projects I have completed thus far:
+  Project 1 - Exploratory Data Analysis; Description: This exploratory data project was used to compare two sets of data in order to analyze trends and correlations. Dplyr functions were used to create summary functions and ggplot was used to create visualizations of the data. This project was completed in R.
+  Project 2 - Modeling; Description: In this project, the focus was modeling of the dataset.</description>
+    </item>
+    
+    <item>
+      <title>Project 1</title>
+      <link>/project-1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/project-1/</guid>
+      <description>R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
+When you click the Knit button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:</description>
+    </item>
+    
+    <item>
+      <title>Project 2</title>
+      <link>/project-2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/project-2/</guid>
+      <description>R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
+When you click the Knit button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:</description>
+    </item>
+    
+  </channel>
+</rss>

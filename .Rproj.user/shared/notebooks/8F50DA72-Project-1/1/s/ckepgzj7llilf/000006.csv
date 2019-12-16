@@ -1,0 +1,3 @@
+"0",""
+"0","sjdf2<-data.frame(PC2=sj_pca$scores[,2], PC3=sj_pca$scores[,3])"
+"0","ggplot(sjdf2,aes(PC2, PC3))+geom_point()"

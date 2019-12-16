@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Annika Gandhi" />
+    <meta name="description" content="Welcome to my website! My name is Annika and I am a senior at the University of Texas at Austin, graduating in May 2020.">
+    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
+    <title>Project 2</title>
+    <meta name="generator" content="Hugo 0.60.1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,200bold,400old" />
+    
+    <!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+    
+  </head>
+
+  <body>
+    <div id="wrap">
+
+      
+      <nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/"><i class="fa fa-home"></i></a>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="navbar-collapse collapse" id="navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+        <li><a href="/blog/">BLOG</a></li>
+        
+        <li><a href="/projects/">PROJECTS</a></li>
+        
+        <li><a href="/sds348res.pdf">RESUME</a></li>
+        
+      
+      </ul>
+    </div>
+  </div>
+</nav>
+
+      
+      <div class="container">
+        <div class="blog-post">
+          <h3>
+            <strong><a href="/project-2/">Project 2</a></strong>
+          </h3>
+        </div>
+        <div class="blog-title">
+          <h4>
+          January 1, 0001
+            &nbsp;&nbsp;
+            
+          </h4>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="blogpost">
+              
+
+
+<div id="r-markdown" class="section level2">
+<h2>R Markdown</h2>
+<p>This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>.</p>
+<p>When you click the <strong>Knit</strong> button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:</p>
+<pre class="r"><code>summary(cars)</code></pre>
+<pre><code>##      speed           dist       
+##  Min.   : 4.0   Min.   :  2.00  
+##  1st Qu.:12.0   1st Qu.: 26.00  
+##  Median :15.0   Median : 36.00  
+##  Mean   :15.4   Mean   : 42.98  
+##  3rd Qu.:19.0   3rd Qu.: 56.00  
+##  Max.   :25.0   Max.   :120.00</code></pre>
+</div>
+<div id="including-plots" class="section level2">
+<h2>Including Plots</h2>
+<p>You can also embed plots, for example:</p>
+<p><img src="/Project-2_files/figure-html/pressure-1.png" width="768" style="display: block; margin: auto;" /></p>
+<p>Note that the <code>echo = FALSE</code> parameter was added to the code chunk to prevent printing of the R code that generated the plot.</p>
+<pre class="r"><code>library(tidyverse)
+library(dplyr)
+
+install_packages &lt;- function(pkg) { 
+  
+  # Install package if it is not already
+  if (!(pkg %in% installed.packages()[, &quot;Package&quot;])){ 
+    
+    install.packages(pkg, repos=&#39;http://cran.us.r-project.org&#39;)
+  }
+  
+  library(pkg, character.only = TRUE)
+  
+} # end installPackages()
+
+pkg_list = c(&quot;tidyverse&quot;, &quot;modelr&quot;, &quot;carData&quot;)
+lapply(pkg_list, install_packages)</code></pre>
+<pre><code>## 
+## The downloaded binary packages are in
+##  /var/folders/w0/x646t8t51rz79rx5lvfylxcc0000gn/T//Rtmp5FJHhn/downloaded_packages</code></pre>
+<pre><code>## [[1]]
+##  [1] &quot;forcats&quot;   &quot;stringr&quot;   &quot;dplyr&quot;     &quot;purrr&quot;     &quot;readr&quot;     &quot;tidyr&quot;    
+##  [7] &quot;tibble&quot;    &quot;ggplot2&quot;   &quot;tidyverse&quot; &quot;knitr&quot;     &quot;stats&quot;     &quot;graphics&quot; 
+## [13] &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot;  &quot;methods&quot;   &quot;base&quot;     
+## 
+## [[2]]
+##  [1] &quot;modelr&quot;    &quot;forcats&quot;   &quot;stringr&quot;   &quot;dplyr&quot;     &quot;purrr&quot;     &quot;readr&quot;    
+##  [7] &quot;tidyr&quot;     &quot;tibble&quot;    &quot;ggplot2&quot;   &quot;tidyverse&quot; &quot;knitr&quot;     &quot;stats&quot;    
+## [13] &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot;  &quot;methods&quot;   &quot;base&quot;     
+## 
+## [[3]]
+##  [1] &quot;carData&quot;   &quot;modelr&quot;    &quot;forcats&quot;   &quot;stringr&quot;   &quot;dplyr&quot;     &quot;purrr&quot;    
+##  [7] &quot;readr&quot;     &quot;tidyr&quot;     &quot;tibble&quot;    &quot;ggplot2&quot;   &quot;tidyverse&quot; &quot;knitr&quot;    
+## [13] &quot;stats&quot;     &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot;  &quot;methods&quot;  
+## [19] &quot;base&quot;</code></pre>
+<pre class="r"><code>options(repos=&quot;https://cran.rstudio.com&quot;)
+a1 &lt;- available.packages()
+a1[a1[,&quot;Package&quot;]==&quot;nlme&quot;,]</code></pre>
+<pre><code>##                                Package                                Version 
+##                                 &quot;nlme&quot;                              &quot;3.1-143&quot; 
+##                               Priority                                Depends 
+##                          &quot;recommended&quot;                         &quot;R (&gt;= 3.4.0)&quot; 
+##                                Imports                              LinkingTo 
+##      &quot;graphics, stats, utils, lattice&quot;                                     NA 
+##                               Suggests                               Enhances 
+##                          &quot;Hmisc, MASS&quot;                                     NA 
+##                                License                        License_is_FOSS 
+##            &quot;GPL (&gt;= 2) | file LICENCE&quot;                                     NA 
+##                  License_restricts_use                                OS_type 
+##                                     NA                                     NA 
+##                                  Archs                                 MD5sum 
+##                                     NA     &quot;51848473d43e8130fcf668566de91588&quot; 
+##                       NeedsCompilation                                   File 
+##                                  &quot;yes&quot;                                     NA 
+##                             Repository 
+## &quot;https://cran.rstudio.com/src/contrib&quot;</code></pre>
+<pre class="r"><code>sessionInfo()</code></pre>
+<pre><code>## R version 3.5.2 (2018-12-20)
+## Platform: x86_64-apple-darwin15.6.0 (64-bit)
+## Running under: macOS Mojave 10.14.6
+## 
+## Matrix products: default
+## BLAS: /Library/Frameworks/R.framework/Versions/3.5/Resources/lib/libRblas.0.dylib
+## LAPACK: /Library/Frameworks/R.framework/Versions/3.5/Resources/lib/libRlapack.dylib
+## 
+## locale:
+## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+## 
+## attached base packages:
+## [1] stats     graphics  grDevices utils     datasets  methods   base     
+## 
+## other attached packages:
+##  [1] carData_3.0-3    modelr_0.1.5     forcats_0.4.0    stringr_1.4.0   
+##  [5] dplyr_0.8.3      purrr_0.3.2      readr_1.3.1      tidyr_1.0.0.9000
+##  [9] tibble_2.1.3     ggplot2_3.2.1    tidyverse_1.2.1  knitr_1.26      
+## 
+## loaded via a namespace (and not attached):
+##  [1] Rcpp_1.0.3       cellranger_1.1.0 pillar_1.4.2     compiler_3.5.2  
+##  [5] tools_3.5.2      zeallot_0.1.0    digest_0.6.23    lubridate_1.7.4 
+##  [9] jsonlite_1.6     evaluate_0.14    lifecycle_0.1.0  nlme_3.1-137    
+## [13] gtable_0.3.0     lattice_0.20-38  pkgconfig_2.0.3  rlang_0.4.2     
+## [17] cli_1.1.0        rstudioapi_0.10  yaml_2.2.0       haven_2.1.1     
+## [21] blogdown_0.17    xfun_0.11        withr_2.1.2      xml2_1.2.2      
+## [25] httr_1.4.1       hms_0.4.2        generics_0.0.2   vctrs_0.2.0     
+## [29] grid_3.5.2       tidyselect_0.2.5 glue_1.3.1       R6_2.4.1        
+## [33] readxl_1.3.1     rmarkdown_1.18   bookdown_0.16    magrittr_1.5    
+## [37] backports_1.1.5  scales_1.1.0     htmltools_0.4.0  rvest_0.3.4     
+## [41] assertthat_0.2.1 colorspace_1.4-1 stringi_1.4.3    lazyeval_0.2.2  
+## [45] munsell_0.5.0    broom_0.5.2      crayon_1.3.4</code></pre>
+<pre class="r"><code>#The dataset Salaries is a dataset of 9 month salaries for different types of professors from a college. There are 397 observations with 6 different variables. The variable salary holds the 9 month salary in dollars. The rank variable gives the type of professor, with options of associate and assistant professor as well as regular professor. The variable discipline explains whether the individual&#39;s subject type is either theoretical - level &quot;A&quot;, or applied - level &quot;B&quot;. The sex variable tells the gender of the individual in question, and the two other numeric variables tell whether how many years it has been since the individual recived their PhD and how many years they have taught at the school. </code></pre>
+<pre class="r"><code>#MANOVA test 
+
+man1&lt;-manova(cbind(yrs.since.phd, yrs.service, salary)~sex, data=Salaries)
+summary(man1)</code></pre>
+<pre><code>##            Df   Pillai approx F num Df den Df   Pr(&gt;F)   
+## sex         1 0.032223   4.3618      3    393 0.004884 **
+## Residuals 395                                            
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<pre class="r"><code>#significant with a pvalue of 0.004884 
+
+#run univariate ANOVAs:
+
+summary.aov(man1)</code></pre>
+<pre><code>##  Response yrs.since.phd :
+##              Df Sum Sq Mean Sq F value   Pr(&gt;F)   
+## sex           1   1456 1455.91  8.9424 0.002961 **
+## Residuals   395  64310  162.81                    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+##  Response yrs.service :
+##              Df Sum Sq Mean Sq F value   Pr(&gt;F)   
+## sex           1   1583 1583.27  9.5622 0.002127 **
+## Residuals   395  65403  165.58                    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+##  Response salary :
+##              Df     Sum Sq    Mean Sq F value   Pr(&gt;F)   
+## sex           1 6.9800e+09 6980014930  7.7377 0.005667 **
+## Residuals   395 3.5632e+11  902077538                    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<pre class="r"><code>#All numeric variables have a significant mean difference across sex using an alpha value of .05. 
+
+#pairwaise t-tests:
+
+Salaries%&gt;%group_by(sex)%&gt;%summarize(mean(yrs.since.phd),mean(yrs.service), mean(salary))</code></pre>
+<pre><code>## # A tibble: 2 x 4
+##   sex    `mean(yrs.since.phd)` `mean(yrs.service)` `mean(salary)`
+##   &lt;fct&gt;                  &lt;dbl&gt;               &lt;dbl&gt;          &lt;dbl&gt;
+## 1 Female                  16.5                11.6        101002.
+## 2 Male                    22.9                18.3        115090.</code></pre>
+<pre class="r"><code>#Among females, the average salary is 101,002.40 while among males it is 115,090.40. Females have an average of 16.5 years since they recieved their PhD whereas males have 22.9 years since recieving theirs. On average, male professors have been teaching at the college for about 7 years longer as well. 
+
+
+#total number of tests performed- 1 MANOVA, 3 ANOVAs --&gt; 4 total 
+
+#p-value to use: .007142857
+
+.05/4</code></pre>
+<pre><code>## [1] 0.0125</code></pre>
+<pre class="r"><code>#.0125 --&gt; everything still significant!
+
+#A one-way multivariate analysis of variance was conducted to test the effect of gender on three numeric variables for professors of a particular college: number of years since recieving their PhD, number of years of service at the college, and nine month salary in dollars. Significant differences were found for one sex versus another on the basis of all three dependent variables with a pillai trace of .032223 and a pseudo F (3,393) of 4.3618. The p-value for this test was less than .05. To follow up with the MANOVA test, 3 univariate ANOVA tests were conducted, one for each dependnt variable. To control for Type 1 error rates becuase of multiple comparisons, the Bonferroni method was used to come up with a testable alpha value of .0125 based on the 4 total tests performed and an original alpha value of .05. The univariate ANOVAs were all found to be significant as well with p-values of .00296, .00213, and .0057 for years since Phd, years of service, and salary, respectively. The assumptions that were concluded to have been met for the MANOVA test performed are the multivariate normality of the dependent variables, the homogeneity of covarianc matrices for each depndent variable and between any 2, and the linear relationships between any two dependent variables. Just by looking at the data and making plots for the normalityassumptions, we can see that the assumptions are met. </code></pre>
+<pre class="r"><code>#Randomization one way ANOVA test: 
+
+#One way ANOVA Table
+summary(aov(salary~rank,data=Salaries))</code></pre>
+<pre><code>##              Df    Sum Sq   Mean Sq F value Pr(&gt;F)    
+## rank          2 1.432e+11 7.162e+10   128.2 &lt;2e-16 ***
+## Residuals   394 2.201e+11 5.586e+08                   
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<pre class="r"><code># F value is 128.2
+
+obs_F&lt;-128.2
+Fs&lt;-replicate(5000,{
+ new&lt;-Salaries%&gt;%mutate(salary=sample(salary))
+ SSW&lt;- new%&gt;%group_by(rank)%&gt;%summarize(SSW=sum((salary-mean(salary))^2))%&gt;%summarize(sum(SSW))%&gt;%pull
+ SSB&lt;- new%&gt;%mutate(mean=mean(salary))%&gt;%group_by(rank)%&gt;%mutate(groupmean=mean(salary))%&gt;%
+ summarize(SSB=sum((mean-groupmean)^2))%&gt;%summarize(sum(SSB))%&gt;%pull
+ (SSB/2)/(SSW/384)
+})
+
+hist(Fs, prob=T); abline(v = obs_F, col=&quot;red&quot;,add=T)</code></pre>
+<p><img src="/Project-2_files/figure-html/unnamed-chunk-3-1.png" width="768" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>mean(Fs&gt;obs_F)</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre class="r"><code>#The null hypothesis is that there is no difference in the means of the salaries based on the ranks of the professors. As a result of the randomization one way ANOVA test, we can see that there is significant evidence to reject the null hypothesis: there is a significant difference in the salary amount between professors of different ranks. </code></pre>
+<pre class="r"><code>#Linear regression model predicting salary from years since phd and years in service. 
+
+#mean centering of numeric variables 
+
+Salaries$yrs.since.phd_c &lt;- Salaries$yrs.since.phd - mean(Salaries$yrs.since.phd)
+Salaries$yrs.service_c &lt;- Salaries$yrs.service - mean(Salaries$yrs.service)
+Salaries$salary_c &lt;- Salaries$salary - mean(Salaries$salary)
+
+fitsal1 &lt;- lm(salary ~ yrs.service_c*yrs.since.phd_c, data = Salaries)
+
+fitsal1</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = salary ~ yrs.service_c * yrs.since.phd_c, data = Salaries)
+## 
+## Coefficients:
+##                   (Intercept)                  yrs.service_c  
+##                     123533.47                         250.53  
+##               yrs.since.phd_c  yrs.service_c:yrs.since.phd_c  
+##                       1056.09                         -64.62</code></pre>
+<pre class="r"><code>summary(fitsal1)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = salary ~ yrs.service_c * yrs.since.phd_c, data = Salaries)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -63823 -17292  -2538  13158 107001 
+## 
+## Coefficients:
+##                                 Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)                   123533.470   1698.633  72.725  &lt; 2e-16 ***
+## yrs.service_c                    250.528    254.880   0.983    0.326    
+## yrs.since.phd_c                 1056.086    242.975   4.346 1.76e-05 ***
+## yrs.service_c:yrs.since.phd_c    -64.617      7.487  -8.630  &lt; 2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 25120 on 393 degrees of freedom
+## Multiple R-squared:  0.3177, Adjusted R-squared:  0.3125 
+## F-statistic: 60.99 on 3 and 393 DF,  p-value: &lt; 2.2e-16</code></pre>
+<pre class="r"><code>#The interpretation of the output of this model is as follows: 
+#When the years since recieving their PhD is 0 and the years of service are also 0, we would expect a nine month salary of $123,533.470. When holding years since phd constant, for every increase in year of service we would expect an increase in salary of $250.528. When holding pears of service constant, we would expect a $1056.086 increase in salary for every additional year since phd. The negative interaction term shows that the higher the number of years since phd the less of an effect the number of years of service had on the salary. 
+
+#plot of regression: 
+
+install.packages(&quot;interactions&quot;)</code></pre>
+<pre><code>## 
+## The downloaded binary packages are in
+##  /var/folders/w0/x646t8t51rz79rx5lvfylxcc0000gn/T//Rtmp5FJHhn/downloaded_packages</code></pre>
+<pre class="r"><code>library(interactions)
+interact_plot(fitsal1, pred = yrs.service_c, modx = yrs.since.phd_c, plot.points = TRUE)</code></pre>
+<p><img src="/Project-2_files/figure-html/unnamed-chunk-4-1.png" width="768" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>#Checking assumptions 
+library(ggplot2)
+resids1 &lt;- fitsal1$residuals
+fitvals1 &lt;- fitsal1$fitted.values
+ggplot()+geom_point(aes(fitvals1,resids1))+geom_hline(yintercept=0, color=&#39;red&#39;)</code></pre>
+<p><img src="/Project-2_files/figure-html/unnamed-chunk-4-2.png" width="768" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>#From the plot of residuals and fitted values, there seems to be a lack of homoskedasticity due to the fanning out nature of the points along the regression line. 
+
+ggplot()+geom_histogram(aes(resids1), bins=20)</code></pre>
+<p><img src="/Project-2_files/figure-html/unnamed-chunk-4-3.png" width="768" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>#Normality, however, looks okay from the histogram of residuals. 
+
+#Due to heteroskedasticity, we will perform regression with robust standard errors. 
+
+library(sandwich); library(lmtest)
+bptest(fitsal1)</code></pre>
+<pre><code>## 
+##  studentized Breusch-Pagan test
+## 
+## data:  fitsal1
+## BP = 44.85, df = 3, p-value = 9.957e-10</code></pre>
+<pre class="r"><code>#With a p-value of 9.957e-10, the Breush-Pagan test&#39;s null hypothesis can be rejected and it can be confirmed that heteroskedasticity is the case in the model. 
+
+summary(fitsal1)$coef[,1:2]</code></pre>
+<pre><code>##                                   Estimate  Std. Error
+## (Intercept)                   123533.47023 1698.633174
+## yrs.service_c                    250.52836  254.880140
+## yrs.since.phd_c                 1056.08650  242.975151
+## yrs.service_c:yrs.since.phd_c    -64.61694    7.487103</code></pre>
+<pre class="r"><code>coeftest(fitsal1, vcov = vcovHC(fitsal1))[,1:2]</code></pre>
+<pre><code>##                                   Estimate Std. Error
+## (Intercept)                   123533.47023 1974.96670
+## yrs.service_c                    250.52836  310.70707
+## yrs.since.phd_c                 1056.08650  294.53162
+## yrs.service_c:yrs.since.phd_c    -64.61694   11.01044</code></pre>
+<pre class="r"><code>#The corrected, robust standard errors are shown in this output. Compared to the previous standard errors, all of these standard errors are quite a bit higher. However, the intercept and coefficient estimates are all the same as the original model run. 
+summary(fitsal1)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = salary ~ yrs.service_c * yrs.since.phd_c, data = Salaries)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -63823 -17292  -2538  13158 107001 
+## 
+## Coefficients:
+##                                 Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)                   123533.470   1698.633  72.725  &lt; 2e-16 ***
+## yrs.service_c                    250.528    254.880   0.983    0.326    
+## yrs.since.phd_c                 1056.086    242.975   4.346 1.76e-05 ***
+## yrs.service_c:yrs.since.phd_c    -64.617      7.487  -8.630  &lt; 2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 25120 on 393 degrees of freedom
+## Multiple R-squared:  0.3177, Adjusted R-squared:  0.3125 
+## F-statistic: 60.99 on 3 and 393 DF,  p-value: &lt; 2.2e-16</code></pre>
+<pre class="r"><code>#The r squared value for this regression model is the proportion of the variation in salary that is explained by this model. According to the model summary, the multiple r squared is equal to .3177. This means that 31.77% of the variation in salary is explained by the years since recieving their PhD and of service and the interaction between these two variables. 
+
+#Rerunning model without interaction: 
+
+fitsal2 &lt;- lm(salary ~ yrs.service + yrs.since.phd, data = Salaries)
+summary(fitsal2)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = salary ~ yrs.service + yrs.since.phd, data = Salaries)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -79735 -19823  -2617  15149 106149 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)    89912.2     2843.6  31.620  &lt; 2e-16 ***
+## yrs.service     -629.1      254.5  -2.472   0.0138 *  
+## yrs.since.phd   1562.9      256.8   6.086 2.75e-09 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 27360 on 394 degrees of freedom
+## Multiple R-squared:  0.1883, Adjusted R-squared:  0.1842 
+## F-statistic: 45.71 on 2 and 394 DF,  p-value: &lt; 2.2e-16</code></pre>
+<pre class="r"><code>lrtest(fitsal2, fitsal1)</code></pre>
+<pre><code>## Likelihood ratio test
+## 
+## Model 1: salary ~ yrs.service + yrs.since.phd
+## Model 2: salary ~ yrs.service_c * yrs.since.phd_c
+##   #Df  LogLik Df  Chisq Pr(&gt;Chisq)    
+## 1   4 -4617.9                         
+## 2   5 -4583.4  1 68.902  &lt; 2.2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<pre class="r"><code>#With a degree of freedom of one, a chi-squared statistic of 68.902 and a p val of 2.2e-16 is given as the outpoot of the likelihood ratio test comparing the interaction term model with the model without the interaction term. This test then proved to be significant, rejecting the null hypothesis that the two models have an equal chance of likelihood- the ratio of their likelihoods is significantly different from 1. </code></pre>
+<pre class="r"><code>#bootstrapped standard errors regression model: 
+
+samp_distn&lt;-replicate(5000, {
+ boot_dat&lt;-Salaries[sample(nrow(Salaries),replace=TRUE),]
+ fit&lt;-lm(salary~yrs.service_c*yrs.since.phd_c,data=boot_dat)
+ coef(fit)
+})
+
+library(dplyr)
+
+## Estimated SEs
+samp_distn%&gt;%t%&gt;%as.data.frame%&gt;%summarize_all(sd)</code></pre>
+<pre><code>##   (Intercept) yrs.service_c yrs.since.phd_c yrs.service_c:yrs.since.phd_c
+## 1     1926.88      299.4349        283.9966                       10.4752</code></pre>
+<pre class="r"><code>#The bootstrapped standard errors for intercept, yrs of service, yrs since phd, and interaction are, respectively: 1955.05  297.3229    281.8892    10.47066. Compared to the robust standard errors, these bootstrapped se&#39;s are slightly lower for all but the intercept se. However, this reduction is very slight, so these standard errors aren still closer to the robust se&#39;s than the original se&#39;s, which are much lower overall for all four values. </code></pre>
+<pre class="r"><code>#Predicting sex (binary variable) from rank (type of professor) and salary 
+
+#making sex 0 or 1 for binary 
+
+levels(Salaries$sex) &lt;- c(1,0)
+head(Salaries)</code></pre>
+<pre><code>##        rank discipline yrs.since.phd yrs.service sex salary yrs.since.phd_c
+## 1      Prof          B            19          18   0 139750       -3.314861
+## 2      Prof          B            20          16   0 173200       -2.314861
+## 3  AsstProf          B             4           3   0  79750      -18.314861
+## 4      Prof          B            45          39   0 115000       22.685139
+## 5      Prof          B            40          41   0 141500       17.685139
+## 6 AssocProf          B             6           6   0  97000      -16.314861
+##   yrs.service_c   salary_c
+## 1     0.3853904  26043.542
+## 2    -1.6146096  59493.542
+## 3   -14.6146096 -33956.458
+## 4    21.3853904   1293.542
+## 5    23.3853904  27793.542
+## 6   -11.6146096 -16706.458</code></pre>
+<pre class="r"><code>#Now 1 is male and 0 is female
+
+fitsal3 &lt;- glm(sex ~ rank + salary, data = Salaries, family = &quot;binomial&quot;)
+summary(fitsal3)</code></pre>
+<pre><code>## 
+## Call:
+## glm(formula = sex ~ rank + salary, family = &quot;binomial&quot;, data = Salaries)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -2.5034   0.3256   0.3982   0.5446   0.6626  
+## 
+## Coefficients:
+##                 Estimate Std. Error z value Pr(&gt;|z|)
+## (Intercept)    6.443e-01  7.815e-01   0.824    0.410
+## rankAssocProf -9.469e-02  4.891e-01  -0.194    0.846
+## rankProf       4.774e-01  5.367e-01   0.889    0.374
+## salary         1.221e-05  8.829e-06   1.383    0.167
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 255.03  on 396  degrees of freedom
+## Residual deviance: 244.99  on 393  degrees of freedom
+## AIC: 252.99
+## 
+## Number of Fisher Scoring iterations: 5</code></pre>
+<pre class="r"><code>coeftest(fitsal3)</code></pre>
+<pre><code>## 
+## z test of coefficients:
+## 
+##                  Estimate  Std. Error z value Pr(&gt;|z|)
+## (Intercept)    6.4430e-01  7.8154e-01  0.8244   0.4097
+## rankAssocProf -9.4692e-02  4.8910e-01 -0.1936   0.8465
+## rankProf       4.7738e-01  5.3669e-01  0.8895   0.3737
+## salary         1.2212e-05  8.8293e-06  1.3831   0.1666</code></pre>
+<pre class="r"><code>#Interpretting the coefficient outputs: Increasing salary increases the probability of the professor being a male, controlling for rank due to the positive coefficient estimate, 1.221e-05,for salary. The positive coefficient value for rankProf, 4.7738e-01, means that compared to an assistant professor, a complete professor has a higher likelihood of being male. An associate professor, however, compared to an assistant professor, is less likely to be male as this coefficent value is -9.4692e-02. However, it is important to note that none of these factors are significant. 
+
+
+
+#Confusion matrix: 
+
+prob&lt;- predict(fitsal3, type = &quot;response&quot;)
+pred&lt;-ifelse(prob&gt;.5,1,0)
+table(truth=Salaries$sex, prediction=pred)%&gt;%addmargins</code></pre>
+<pre><code>##      prediction
+## truth   1 Sum
+##   1    39  39
+##   0   358 358
+##   Sum 397 397</code></pre>
+<pre class="r"><code>#   prediction
+#truth 0 1  Sum
+#  0   0 39  39
+#  1   0 358 358
+#  Sum 0 397 397
+
+#From the confusion matrix we can see that none of the professors were predicted to be female. 
+
+#Accuracy statistics: 
+
+(0+358)/397</code></pre>
+<pre><code>## [1] 0.9017632</code></pre>
+<pre class="r"><code>#accuracy = 0.9017632
+
+358/397</code></pre>
+<pre><code>## [1] 0.9017632</code></pre>
+<pre class="r"><code>#Sensitivity (TPR) = 0.9017632
+
+0/39 </code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre class="r"><code>#Specificity (TNR) = 0
+
+358/358</code></pre>
+<pre><code>## [1] 1</code></pre>
+<pre class="r"><code>#Precision (PPV) = 1
+
+#From these accuracy statsistics, we can see that the model did well in predicting the male professors that were male, but had the lowest negative rate possible in terms of specificity because the model did not predict any professors as female when there were truly 39/397 professors that were female. The model had a perfect recall or precision score of 1 because it predicted all the male professors as male. 
+
+
+#logit 
+
+odds&lt;-function(p)p/(1-p)
+p&lt;-seq(0,1,by=.1)
+cbind(p, odds=odds(p))%&gt;%round(4)</code></pre>
+<pre><code>##         p   odds
+##  [1,] 0.0 0.0000
+##  [2,] 0.1 0.1111
+##  [3,] 0.2 0.2500
+##  [4,] 0.3 0.4286
+##  [5,] 0.4 0.6667
+##  [6,] 0.5 1.0000
+##  [7,] 0.6 1.5000
+##  [8,] 0.7 2.3333
+##  [9,] 0.8 4.0000
+## [10,] 0.9 9.0000
+## [11,] 1.0    Inf</code></pre>
+<pre class="r"><code>logit&lt;-function(p)log(odds(p))
+cbind(p, odds=odds(p),logit=logit(p))%&gt;%round(4)</code></pre>
+<pre><code>##         p   odds   logit
+##  [1,] 0.0 0.0000    -Inf
+##  [2,] 0.1 0.1111 -2.1972
+##  [3,] 0.2 0.2500 -1.3863
+##  [4,] 0.3 0.4286 -0.8473
+##  [5,] 0.4 0.6667 -0.4055
+##  [6,] 0.5 1.0000  0.0000
+##  [7,] 0.6 1.5000  0.4055
+##  [8,] 0.7 2.3333  0.8473
+##  [9,] 0.8 4.0000  1.3863
+## [10,] 0.9 9.0000  2.1972
+## [11,] 1.0    Inf     Inf</code></pre>
+<pre class="r"><code>#density of log-odds (logit)
+
+fitsal4&lt;-glm(sex ~ rank + salary, data = Salaries, family = binomial(link=&quot;logit&quot;))
+coeftest(fitsal4)</code></pre>
+<pre><code>## 
+## z test of coefficients:
+## 
+##                  Estimate  Std. Error z value Pr(&gt;|z|)
+## (Intercept)    6.4430e-01  7.8154e-01  0.8244   0.4097
+## rankAssocProf -9.4692e-02  4.8910e-01 -0.1936   0.8465
+## rankProf       4.7738e-01  5.3669e-01  0.8895   0.3737
+## salary         1.2212e-05  8.8293e-06  1.3831   0.1666</code></pre>
+<pre class="r"><code>Salaries$logit&lt;-predict(fitsal4) 
+Salaries$sex&lt;-factor(Salaries$sex,levels=c(1,0),labels=c(&quot;male&quot;,&quot;female&quot;))
+ggplot(Salaries,aes(logit, fill=sex))+geom_density(alpha=.3)+geom_vline(xintercept=0,lty=2)</code></pre>
+<p><img src="/Project-2_files/figure-html/unnamed-chunk-6-1.png" width="768" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>ggplot</code></pre>
+<pre><code>## function (data = NULL, mapping = aes(), ..., environment = parent.frame()) 
+## {
+##     UseMethod(&quot;ggplot&quot;)
+## }
+## &lt;bytecode: 0x7fe279d55da0&gt;
+## &lt;environment: namespace:ggplot2&gt;</code></pre>
+<pre class="r"><code>#
+
+library(ggplot2)
+install.packages(&quot;plotROC&quot;)</code></pre>
+<pre><code>## 
+## The downloaded binary packages are in
+##  /var/folders/w0/x646t8t51rz79rx5lvfylxcc0000gn/T//Rtmp5FJHhn/downloaded_packages</code></pre>
+<pre class="r"><code>library(plotROC)
+
+ROCplot&lt;-ggplot(Salaries)+geom_roc(aes(d=sex,m=prob), n.cuts=0)+geom_segment(aes(x=0,xend=1,y=0,yend=1),lty=2)
+
+ROCplot</code></pre>
+<p><img src="/Project-2_files/figure-html/unnamed-chunk-6-2.png" width="768" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>calc_auc(ROCplot)</code></pre>
+<pre><code>##   PANEL group       AUC
+## 1     1    -1 0.3550709</code></pre>
+<pre class="r"><code># auc is 0.6449291
+
+#The area under the curve is .6449. This is the amount out of 1 that is explained by the model. The .6449 value is the probability that being predicted as a male has a higher prediction that a randomly selected person has the probability of being predicted a male. 
+
+
+#sens&lt;-function(p,data=data, y=y) mean(data[data$y==1,]$prob&gt;p)
+#spec&lt;-function(p,data=data, y=y) mean(data[data$y==0,]$prob&lt;p)
+#sensitivity&lt;-sapply(seq(0,1,.01),sens,Salaries)
+#specificity&lt;-sapply(seq(0,1,.01),spec,Salaries)
+#ROC1&lt;-data.frame(sensitivity,specificity,cutoff=seq(0,1,.01))
+
+#ROCcurve&lt;-ggplot(Salaries)+geom_roc(aes(d=sex,m=prob), n.cuts=0)
+#ROCcurve
+#calc_auc(ROCcurve)
+
+#10 fold CV
+
+
+class_diag&lt;-function(probs,truth){
+ tab&lt;-table(factor(probs&gt;.5,levels=c(&quot;FALSE&quot;,&quot;TRUE&quot;)),truth)
+ acc=sum(diag(tab))/sum(tab)
+ sens=tab[2,2]/colSums(tab)[2]
+ spec=tab[1,1]/colSums(tab)[1]
+ ppv=tab[2,2]/rowSums(tab)[2]
+ if(is.numeric(truth)==FALSE &amp; is.logical(truth)==FALSE) truth&lt;-as.numeric(truth)-1
+ #CALCULATE EXACT AUC
+ ord&lt;-order(probs, decreasing=TRUE)
+ probs &lt;- probs[ord]; truth &lt;- truth[ord]
+ TPR=cumsum(truth)/max(1,sum(truth))
+ FPR=cumsum(!truth)/max(1,sum(!truth))
+ dup&lt;-c(probs[-1]&gt;=probs[-length(probs)], FALSE)
+ TPR&lt;-c(0,TPR[!dup],1); FPR&lt;-c(0,FPR[!dup],1)
+ n &lt;- length(TPR)
+ auc&lt;- sum( ((TPR[-1]+TPR[-n])/2) * (FPR[-1]-FPR[-n]) )
+ data.frame(acc,sens,spec,ppv,auc)
+} 
+
+
+set.seed(1234)
+k=10 #choose number of folds
+data1&lt;-Salaries[sample(nrow(Salaries)),] #randomly order rows
+folds&lt;-cut(seq(1:nrow(Salaries)),breaks=k,labels=F) #create folds
+diags&lt;-NULL
+for(i in 1:k){
+ ## Create training and test sets
+ train&lt;-data1[folds!=i,]
+ test&lt;-data1[folds==i,]
+ truth&lt;-test$sex
+ ## Train model on training set
+ probs&lt;-predict(fitsal3,newdata = test,type=&quot;response&quot;)
+ ## Test model on test set (save all k results)
+ diags&lt;-rbind(diags,class_diag(probs,truth))
+}
+    
+apply(diags,2,mean) </code></pre>
+<pre><code>##       acc      sens      spec       ppv       auc 
+## 0.9018590 1.0000000 0.0000000 0.9018590 0.6352324</code></pre>
+<pre class="r"><code>#    acc       sens       spec        ppv        auc 
+# 0.09814103 1.00000000 0.00000000 0.09814103 0.36476759 </code></pre>
+<pre class="r"><code>#lasso regression: 
+
+Salariesslim &lt;- select(Salaries, rank, discipline, yrs.since.phd, yrs.service, sex, salary)
+fitsal5&lt;- lm(sex~., data = Salariesslim)
+yhat &lt;- predict(fitsal5)
+mean((Salaries$sex-yhat)^2) </code></pre>
+<pre><code>## [1] NA</code></pre>
+<pre class="r"><code>library(glmnet)
+data(Salariesslim)
+
+
+Salariesslim&lt;-Salariesslim%&gt;%mutate_at(-1, function(x)x-mean(x))
+
+
+y&lt;-as.matrix(Salariesslim$sex)
+#x&lt;-Salariesslim[,-1]%&gt;%scale%&gt;%as.matrix
+
+
+#dplyr::select(-sex)%&gt;%mutate_all(scale)%&gt;%as.matrix
+
+#cv&lt;-cv.glmnet(x,y) 
+
+#Calculating mean squared error: 
+mean((Salariesslim$sex-yhat)^2) </code></pre>
+<pre><code>## [1] NA</code></pre>
+</div>
+
+              <hr>
+              <div class="related-posts">
+                <h5>Related Posts</h5>
+                
+              </div>
+            </div>
+          </div>
+          <hr>
+        <div class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+
+    (function() {
+      
+      
+      if (window.location.hostname == "localhost")
+        return;
+
+      var disqus_shortname = '';
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+        </div>
+      </div>
+      
+    </div>
+
+    
+    <footer>
+  <div id="footer">
+    <div class="container">
+      <p class="text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io/">Hugo</a> and
+      <a href="http://www.github.com/nurlansu/hugo-sustain/">sustain</a> with ♥</p>
+    </div>
+  </div>
+</footer>
+<div class="footer"></div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="/js/docs.min.js"></script>
+<script src="/js/main.js"></script>
+
+<script src="/js/ie10-viewport-bug-workaround.js"></script>
+
+
+    
+  </body>
+</html>

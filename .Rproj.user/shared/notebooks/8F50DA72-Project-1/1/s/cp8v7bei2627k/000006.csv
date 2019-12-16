@@ -1,0 +1,8 @@
+"0",""
+"0","#### A tibble: 2 x 12"
+"0","#treatment     X    base   age seizure.rate  period subject    y1    y2    y3    y4   trt"
+"0","#<fct>     <dbl> <dbl> <dbl>        <dbl>  <dbl>   <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>"
+"0","# 1 placebo    118.  25.7  5.92         10.4   1.12    8.11 10.00  8.05  14.5  7.51     0"
+"0"," #2 Progabide  190.  27.6  6.52         13.9   1.12    8.98 19.2  12.5   14.2 11.8      0"
+"0",""
+"0","seizurejoined %>% filter(period == 1 & trt == 0) %>% summarise(mean_rate = mean(seizure.rate, na.rm = T))"

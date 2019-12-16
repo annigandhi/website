@@ -1,0 +1,8 @@
+"0",""
+"0","seizurejoined %>% mutate(ratevsbaseline = base/4) -> seizurejoined"
+"0",""
+"0",""
+"0","##The first two tibbles show the means and standard deviations for each of the numeric variables for individuals that were taking the placebo pill and individuals taking the anti-seizure medication. What is particularly important here is the seizure rate column as that is how we can see what affect taking the drug had assuming that both populations had fairly similar seizure rates. Those taking the placebo had an average of only .64 more seizures, so it doesn't seem very conclusive that the anti-seizure medication was effective in reducing seizure rates at first glance. I then further investigated this by finding the mean seizure rates per period and per treatment to see whether this mean number changed over time for each treatment. The mean seizure rate over time from period 1 to 4 does on average go down, from 9.357143 to  7.964286 for individuals on the placebo over the course of 8 weeks and from 8.962963 to 6.62963 for individuals on Progabide over the course of 8 weeks. This could be a promising sign of some effect of the trial. "
+"0",""
+"0","##I then selected for age and arranged ascendingly to see what the minimum and maximum ages were easily. The minimum age for the trial was 18 and the maximum age was 42. Next, I made a new variable to make the baseline number of seizures over 8 weeks an average of each of the two week periods during the baseline time. I did this by dividing the 8 week baseline value by 4. This was done so I could easily compare the baseline seizure rate to the seizure rates during the course of the trial. "
+"0",""

@@ -1,0 +1,4 @@
+"0",""
+"0","## From the scree plot and its cumulative sums of variance, we can see that we should keep three principal components.Although PC 1 doesn't have a correlation value for each variable, it does load based on base, age, and seizure rate which are the non-ID variables we would like to compare. we can see from the scatterplot of PC2 vs PC1, PC1 explains most of the variance in the two main groups shown on the plot. PC2 also divides the variance into two main halves, upper and lower, of the plot. When looking at the plot of loadings we can see that the seizure rate and rate versus baseline are redundant and strongly influence PC1 while the age is slightly negatively correlated and also slightly affects PC1. The variables X, trt, and subject do not really affect PC1 but do affect PC2. PC3 is influenced by age. "
+"0",""
+"0",""

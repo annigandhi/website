@@ -1,0 +1,47 @@
+"0",""
+"0","epilepsywide %>% pivot_longer(c(placebo, Progabide), names_to = ""treatment"", values_to = ""trt"") ->epilepsyshort"
+"0","na.omit(epilepsyshort)->epilepsyshort"
+"0","glimpse(epilepsyshort)"
+"1","Observations: 220
+"
+"1","Variables: 12
+"
+"1","$ X1           [3m[38;5;246m<dbl>[39m[23m 1, 110, 112, 114, 2, 210, 212, 214, 3, 310, 312, 314, 4, 41…
+"
+"1",""
+"1","$ base         [3m[38;5;246m<dbl>[39m[23m 11, 11, 11, 11, 11, 11, 11, 11, 6, 6, 6, 6, 8, 8, 8, 8, 66,…
+"
+"1",""
+"1","$ age          [3m[38;5;246m<dbl>[39m[23m 31, 31, 31, 31, 30, 30, 30, 30, 25, 25, 25, 25, 36, 36, 36,…
+"
+"1",""
+"1","$ seizure.rate [3m[38;5;246m<dbl>[39m[23m 5, 3, 3, 3, 3, 5, 3, 3, 2, 4, 0, 5, 4, 4, 1, 4, 7, 18, 9, 2…
+"
+"1",""
+"1","$ period       [3m[38;5;246m<dbl>[39m[23m 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4,…
+"
+"1",""
+"1","$ subject      [3m[38;5;246m<dbl>[39m[23m 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5,…
+"
+"1",""
+"1","$ y1           [3m[38;5;246m<dbl>[39m[23m 5, 5, 5, 5, 3, 3, 3, 3, 2, 2, 2, 2, 4, 4, 4, 4, 7, 7, 7, 7,…
+"
+"1",""
+"1","$ y2           [3m[38;5;246m<dbl>[39m[23m 3, 3, 3, 3, 5, 5, 5, 5, 4, 4, 4, 4, 4, 4, 4, 4, 18, 18, 18,…
+"
+"1",""
+"1","$ y3           [3m[38;5;246m<dbl>[39m[23m 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 1, 1, 1, 1, 9, 9, 9, 9,…
+"
+"1",""
+"1","$ y4           [3m[38;5;246m<dbl>[39m[23m 3, 3, 3, 3, 3, 3, 3, 3, 5, 5, 5, 5, 4, 4, 4, 4, 21, 21, 21,…
+"
+"1",""
+"1","$ treatment    [3m[38;5;246m<chr>[39m[23m ""placebo"", ""placebo"", ""placebo"", ""placebo"", ""placebo"", ""pla…
+"
+"1",""
+"1","$ trt          [3m[38;5;246m<dbl>[39m[23m 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+"
+"0","##Although this data is already tidy, I demonstrated my knowledge of these functions by creating new columns with the treatment names and treatment numerical identifier for values. However, because half of the values had NAs in either column, I had to delete the NAs causing some rows to be deleted for individuals that did not have matching data in the epilepsy dataset. "
+"0",""
+"0",""
+"0",""
